@@ -7,10 +7,12 @@ React-приложение, созданное с использованием V
 ### Занятие 19: Базовые элементы работы с React.js и JSX
 
 1. **Greeting** — компонент приветствия
+
    - Отображает приветствие в зависимости от времени суток (утро, день, вечер)
    - Использует переменную с именем пользователя
 
 2. **UserCard** — компонент карточки пользователя
+
    - Принимает через props: `name`, `role`, `avatarUrl`, `isOnline`
    - Отображает аватар, имя, роль и статус (онлайн/офлайн)
    - Использует деструктуризацию props
@@ -24,11 +26,13 @@ React-приложение, созданное с использованием V
 ### Занятие 20: Менеджер состояний и компонентов
 
 1. **Counter** — счётчик с кнопками
+
    - Увеличивать, уменьшать и сбрасывать значение
    - Отображает текущее значение
    - Использует `useState` для управления состоянием
 
 2. **RegistrationForm** — форма регистрации
+
    - Поля: имя, email, пароль
    - Валидация email в реальном времени
    - Обработчик отправки формы с выводом данных в консоль
@@ -41,79 +45,71 @@ React-приложение, созданное с использованием V
 ## Установка и запуск
 
 1. Установите зависимости:
+
 ```bash
 npm install
 ```
 
 2. Запустите dev-сервер:
+
 ```bash
 npm run dev
 ```
 
 3. Соберите проект для production:
+
 ```bash
 npm run build
 ```
 
 4. Предпросмотр production сборки:
+
 ```bash
 npm run preview
 ```
 
 ## Публикация на GitHub Pages
 
-### Способ 1: Использование GitHub Actions (рекомендуется)
+### Автоматическая публикация через GitHub Actions
 
-1. Создайте файл `.github/workflows/deploy.yml`:
-```yaml
-name: Deploy to GitHub Pages
+Workflow файл уже создан в `.github/workflows/deploy.yml`. Для работы нужно:
 
-on:
-  push:
-    branches: [ main ]
+1. **Обновите базовый путь** в файле `.github/workflows/deploy.yml`:
 
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          
-      - name: Install dependencies
-        run: npm install
-        
-      - name: Build
-        run: npm run build
-        
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-```
+   - Найдите строку `VITE_BASE: /FrontAndBack_work/`
+   - Замените `FrontAndBack_work` на имя вашего репозитория
 
-2. В `vite.config.js` добавьте базовый путь:
-```js
-export default defineConfig({
-  plugins: [react()],
-  base: '/FrontAndBack_work/', // замените на имя вашего репозитория
-})
-```
+2. **Включите GitHub Pages в настройках репозитория**:
 
-3. В настройках репозитория GitHub включите GitHub Pages (Settings → Pages → Source: GitHub Actions)
+   - Перейдите в Settings → Pages
+   - В разделе "Source" выберите "Deploy from a branch"
+   - Выберите ветку `gh-pages` и папку `/ (root)`
+   - Нажмите Save
+   - **Важно**: Ветка `gh-pages` будет создана автоматически после первого запуска workflow
+
+3. **Запушьте код в репозиторий**:
+
+   ```bash
+   git add .
+   git commit -m "Setup GitHub Pages"
+   git push
+   ```
+
+4. После успешного выполнения workflow ваше приложение будет доступно по адресу:
+   `https://ваш-username.github.io/имя-репозитория/`
+
+**Примечание**: Если вы используете новый workflow с `peaceiris/actions-gh-pages`, он автоматически создаст ветку `gh-pages` и задеплоит туда ваш проект. После этого нужно будет включить GitHub Pages в настройках репозитория, выбрав ветку `gh-pages` как источник.
 
 ### Способ 2: Ручная публикация
 
 1. Установите пакет для деплоя:
+
 ```bash
 npm install --save-dev gh-pages
 ```
 
 2. Добавьте скрипты в `package.json`:
+
 ```json
 {
   "scripts": {
@@ -126,6 +122,7 @@ npm install --save-dev gh-pages
 3. Обновите `vite.config.js` с базовым путём (как в способе 1)
 
 4. Запустите деплой:
+
 ```bash
 npm run deploy
 ```
@@ -158,4 +155,3 @@ npm run deploy
 ├── vite.config.js
 └── README.md
 ```
-
