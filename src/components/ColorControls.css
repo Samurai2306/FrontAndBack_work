@@ -1,0 +1,41 @@
+.color-controls h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.color-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.color-btn {
+  width: 80px;
+  height: 80px;
+  border: 3px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.color-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.color-btn.active {
+  border-color: #333;
+  box-shadow: 0 0 0 4px rgba(100, 108, 255, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  .color-btn.active {
+    border-color: white;
+  }
+}
+

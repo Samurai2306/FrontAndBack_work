@@ -1,0 +1,19 @@
+.greeting {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.greeting h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+.greeting-time {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+

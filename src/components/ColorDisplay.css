@@ -1,0 +1,23 @@
+.color-display {
+  margin-bottom: 2rem;
+}
+
+.color-display-box {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.color-display-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.color-display-text span {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
